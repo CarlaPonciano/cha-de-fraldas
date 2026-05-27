@@ -628,7 +628,14 @@ try{ if(localStorage.getItem('cha_lais_opened')==='1')
   document.getElementById('hint').textContent='✨ Clique para reabrir ✨';
 }catch(e){}
 
-/* ── Fralda por URL ── */
+/* ── Pausa música ao sair do app, retoma ao voltar ── */
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    if (bgAudio && !bgAudio.paused) bgAudio.pause();
+  } else {
+    if (isOpen && soundEnabled && bgAudio) bgAudio.play().catch(()=>{});
+  }
+});
 (function(){
   const allowed=['P','M','G'];
   const param=new URLSearchParams(window.location.search).get('fralda');
