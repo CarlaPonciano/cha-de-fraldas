@@ -637,7 +637,7 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 (function(){
-  const allowed=['P','M','G'];
+  const allowed=['RN','P','M','G','XG'];
   const param=new URLSearchParams(window.location.search).get('fralda');
   const size=allowed.includes((param||'').toUpperCase())?param.toUpperCase():'P';
   document.getElementById('diaperSize').textContent='Fralda '+size;
